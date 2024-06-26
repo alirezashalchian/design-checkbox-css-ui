@@ -1,0 +1,84 @@
+body {
+  background-color: #f5f5f5;
+}
+.form {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  display: flex;
+  align-items: center;
+}
+label {
+  display: flex;
+  color: #656770;
+  padding: 3px 10px 3px 3px;
+  font-size: 50px;
+  width: max-content;
+  font-family: monospace;
+  letter-spacing: 13px;
+}
+input {
+  opacity: 0;
+}
+.check {
+  width: 40px;
+  height: 40px;
+  border: 3px solid red;
+  margin-right: 22px;
+  transform: translate(0, 6px);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+.check::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "✓";
+  color: red;
+  display: flex;
+  font-size: 30px;
+  font-weight: 700;
+  justify-content: center;
+  letter-spacing: 0;
+  opacity: 0;
+  transition: 1s;
+  filter: blur(33px);
+}
+input[type="checkbox"]:checked + label > .check::after {
+  opacity: 1;
+  filter: blur(0px);
+}
+.status {
+  color: #f5f5f5;
+  padding: 5px 0;
+  transform: translate(0, -5px);
+  position: relative;
+  margin-right: 30px;
+  overflow: hidden;
+}
+.status::before,
+.status::after {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  color: #656770;
+  padding: 5px 0;
+  text-align: right;
+  transition: 1s;
+}
+.status::before {
+  top: 0;
+  content: attr(data-no);
+}
+.status::after {
+  top: -100%;
+  content: attr(data-yes);
+}
+input[type="checkbox"]:checked + label > .status::before {
+  top: 100%;
+}
+input[type="checkbox"]:checked + label > .status::after {
+  top: 0%;
+}
